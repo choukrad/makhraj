@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Plan & Mémorandum d'Investissement — MAKHRAJ IMMO (2026-2029)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Naskh+Arabic:wght@600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Instrument Serif', 'Georgia', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        arabic: ['Noto Naskh Arabic', 'serif'],
+                    },
+                    colors: {
+                        vellum: '#FBF9F5',
+                        obsidian: '#0B0F17',
+                        cypress: '#0D3B2E',
+                        bronze: '#8C6D46',
+                        crimson: '#881337',
+                        hairline: '#DEDAD0'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #E5E2DC;
+            color: #0B0F17;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        /* Calibration A4 exacte */
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            background: #FBF9F5;
+            padding: 18mm 18mm 16mm 18mm;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            page-break-after: always;
+            break-after: page;
+        }
+        .a4-cover {
+            background: #0B0F17;
+            color: #FBF9F5;
+        }
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+        @media print {
+            body { background: none; margin: 0; }
+            .no-print { display: none !important; }
+            .a4-page {
+                margin: 0;
+                box-shadow: none;
+                width: 210mm;
+                height: 297mm;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- BARRE D'EXPORT PDF (MASQUÉE À L'IMPRESSION) -->
+    <div class="no-print sticky top-0 z-50 bg-obsidian text-white border-b border-stone-800 px-6 py-3.5 flex items-center justify-between shadow-xl">
+        <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+            <span class="font-mono text-xs uppercase tracking-widest">Document Calibré A4 (6 Pages) — Prêt pour Export PDF</span>
+            <span class="text-xs text-stone-400 hidden md:inline">| Activez "Graphiques d'arrière-plan" dans la fenêtre d'impression</span>
+        </div>
+        <button onclick="window.print()" class="px-6 py-2.5 bg-bronze hover:bg-amber-600 text-white font-mono text-xs uppercase tracking-wider font-semibold transition cursor-pointer">
+            🖨️ Télécharger / Enregistrer en PDF (A4)
+        </button>
+    </div>
+
+    <!-- =====================================================================
+         PAGE 1 : PAGE DE GARDE INSTITUTIONNELLE (COVER)
+    ====================================================================== -->
+    <div class="a4-page a4-cover">
+        <!-- En-tête de couverture -->
+        <div class="flex justify-between items-start border-b border-stone-800 pb-6">
+            <div>
+                <div class="flex items-baseline gap-3">
+                    <span class="font-serif text-3xl tracking-tight text-white">Makhraj</span>
+                    <span class="font-arabic text-lg text-bronze">مخرج</span>
+                </div>
+                <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-stone-400 block mt-1">
+                    Chambre de Substitution & Liquidité VEFA • Maroc
+                </span>
+            </div>
+            <div class="text-right font-mono text-[10px] text-stone-400 uppercase tracking-widest">
+                <div>CONFIDENTIEL — DOSSIER INVESTISSEUR</div>
+                <div class="text-bronze mt-1">OCTOBRE 2026</div>
+            </div>
+        </div>
+
+        <!-- Titre central -->
+        <div class="my-auto py-12">
+            <div class="inline-block px-3 py-1 border border-bronze/40 bg-bronze/10 font-mono text-[10px] uppercase tracking-[0.2em] text-bronze mb-6">
+                Mémorandum Stratégique & Plan Financier (2026–2029)
+            </div>
+            <h1 class="font-serif text-6xl leading-[1.04] text-white tracking-tight mb-6">
+                Structurer le marché secondaire des contrats immobiliers <span class="italic text-bronze">sur plan au Maroc.</span>
+            </h1>
+            <p class="text-base text-stone-300 font-light leading-relaxed max-w-xl mb-8">
+                Adaptation institutionnelle du modèle <em>Installment Property Exit</em> au cadre juridique marocain (Loi n° 107-12 / Art. 618-13 du DOC) : sauvetage d'apport à 0 % de frais pour les acquéreurs bloqués à la livraison et arbitrage décoté sous séquestre notarial CDG.
+            </p>
+            <p class="font-arabic text-lg text-stone-300 border-r-2 border-bronze pr-4 text-right max-w-lg">
+                أول منصة قانونية ومالية بالمغرب للتخارج الآمن من عقود العقار في طور الإنجاز واسترجاع التسبيق كاملاً عبر حساب الودائع لدى الموثق.
+            </p>
+        </div>
+
+        <!-- Grille de synthèse de couverture -->
+        <div>
+            <div class="grid grid-cols-4 border-t border-b border-stone-800 py-6 mb-6 font-mono">
+                <div class="pr-4 border-r border-stone-800">
+                    <div class="text-[10px] text-stone-400 uppercase">Marché Sous-Jacent (SAM)</div>
+                    <div class="text-xl text-white font-semibold mt-1">5,2 MMDH/an</div>
+                    <div class="text-[10px] text-stone-500 mt-0.5">4 000 contrats/an ciblés</div>
+                </div>
+                <div class="px-4 border-r border-stone-800">
+                    <div class="text-[10px] text-stone-400 uppercase">Point Mort (Break-Even)</div>
+                    <div class="text-xl text-emerald-400 font-semibold mt-1">2,5 Deals/mois</div>
+                    <div class="text-[10px] text-stone-500 mt-0.5">ARPU : 26 000 MAD HT</div>
+                </div>
+                <div class="px-4 border-r border-stone-800">
+                    <div class="text-[10px] text-stone-400 uppercase">Projection CA Année 3</div>
+                    <div class="text-xl text-white font-semibold mt-1">11,70 M MAD</div>
+                    <div class="text-[10px] text-stone-500 mt-0.5">450 substitutions/an</div>
+                </div>
+                <div class="pl-4">
+                    <div class="text-[10px] text-stone-400 uppercase">EBITDA Année 3</div>
+                    <div class="text-xl text-bronze font-semibold mt-1">+6,20 M MAD</div>
+                    <div class="text-[10px] text-stone-500 mt-0.5">Marge opérationnelle : 53%</div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center font-mono text-[10px] text-stone-500">
+                <span>AXE PRIORITAIRE : TÉMARA / HARHOURA • RABAT • CASABLANCA • TANGER</span>
+                <span>PAGE 01 / 06</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         PAGE 2 : EXECUTIVE SUMMARY & GENÈSE DU MODÈLE
+    ====================================================================== -->
+    <div class="a4-page">
+        <div>
+            <!-- Header de page -->
+            <div class="flex justify-between items-center border-b border-hairline pb-3 mb-8 font-mono text-[10px] text-stone-500 uppercase tracking-widest">
+                <span>MAKHRAJ IMMO — BUSINESS PLAN (2026–2029)</span>
+                <span>SECTION 01 // SYNTHÈSE EXÉCUTIVE</span>
+            </div>
+
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-bronze font-semibold">I. Synthèse Exécutive & Preuve de Concept Internationale</span>
+            <h2 class="font-serif text-4xl text-obsidian mt-1 mb-6">
+                Du modèle « Aqar Exit » à l'adaptation notariale marocaine
+            </h2>
+
+            <!-- Encadré Benchmark Shark Tank -->
+            <div class="bg-white border border-hairline p-5 mb-6">
+                <div class="flex justify-between items-baseline mb-2">
+                    <span class="font-mono text-[11px] uppercase tracking-wider font-semibold text-cypress">Benchmark Régional MENA : Aqar Exit (Shark Tank Egypt)</span>
+                    <span class="font-mono text-[10px] text-stone-400">Traction enregistrée en 40 jours</span>
+                </div>
+                <p class="text-xs text-stone-600 leading-relaxed mb-4">
+                    Le modèle de place de marché dédiée à la sortie des acheteurs sur plan en difficulté financière (« Installment Property Exit ») a démontré une vélocité exceptionnelle sur le marché nord-africain. En permettant au vendeur de céder son contrat à son prix d'origine (« Zero Overprice ») avec 0 % de commission vendeur, la plateforme crée un arbitrage immédiat pour le nouvel acheteur.
+                </p>
+                <div class="grid grid-cols-4 gap-3 pt-3 border-t border-hairline font-mono text-center">
+                    <div class="bg-vellum p-2.5 border border-hairline">
+                        <div class="text-base font-semibold text-obsidian">7 919</div>
+                        <div class="text-[9px] text-stone-500 uppercase">Unités listées (40j)</div>
+                    </div>
+                    <div class="bg-vellum p-2.5 border border-hairline">
+                        <div class="text-base font-semibold text-cypress">-29,5 %</div>
+                        <div class="text-[9px] text-stone-500 uppercase">Écart Prix Contrat/Marché</div>
+                    </div>
+                    <div class="bg-vellum p-2.5 border border-hairline">
+                        <div class="text-base font-semibold text-obsidian">36 000</div>
+                        <div class="text-[9px] text-stone-500 uppercase">Offres d'achat reçues</div>
+                    </div>
+                    <div class="bg-vellum p-2.5 border border-hairline">
+                        <div class="text-base font-semibold text-bronze">> 60 %</div>
+                        <div class="text-[9px] text-stone-500 uppercase">Taux de demande active</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparatif structurel Égypte vs Maroc -->
+            <h3 class="font-serif text-2xl text-obsidian mb-3">Pourquoi le modèle doit être adapté structurellement au Maroc</h3>
+            <p class="text-xs text-stone-600 leading-relaxed mb-4">
+                Un simple copier-coller échouerait au Maroc. En Égypte, les promoteurs financent eux-mêmes l'acheteur sur 8 à 10 ans dans une économie à forte dévaluation monétaire. Au Maroc, le financement repose sur <strong>des avances pendant les travaux (20 % à 30 %) suivies d'un crédit bancaire à la livraison (70 % à 80 %)</strong>, sous un formalisme notarial strict.
+            </p>
+
+            <table class="w-full text-left border-collapse border border-hairline text-[11px] bg-white mb-6">
+                <thead>
+                    <tr class="bg-obsidian text-white font-mono text-[10px] uppercase">
+                        <th class="p-3 border-r border-stone-700">Paramètre Structurel</th>
+                        <th class="p-3 border-r border-stone-700">Marché Égyptien (Aqar Exit)</th>
+                        <th class="p-3">Marché Marocain (Modèle MAKHRAJ)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-hairline">
+                    <tr>
+                        <td class="p-3 font-semibold bg-vellum border-r border-hairline">Origine du défaut client</td>
+                        <td class="p-3 border-r border-hairline text-stone-600">Incapacité à payer les traites trimestrielles au promoteur sur 8 ans.</td>
+                        <td class="p-3 text-obsidian font-medium">Refus du crédit bancaire définitif au Mois 22 (à l'éclatement du Titre Foncier) ou choc de trésorerie.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-semibold bg-vellum border-r border-hairline">Sanction en cas d'annulation</td>
+                        <td class="p-3 border-r border-hairline text-stone-600">Pénalité de 10 % à 15 % du prix total + remboursement étalé sur 3 ans.</td>
+                        <td class="p-3 text-crimson font-medium">Clause pénale de 10 % du prix total (Compromis) ou 15 %-20 % des avances (Loi 107-12) + attente 12-24 mois.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-semibold bg-vellum border-r border-hairline">Mécanisme de transfert</td>
+                        <td class="p-3 border-r border-hairline text-stone-600">Cession interne (« Tanazol ») au siège du promoteur.</td>
+                        <td class="p-3 text-cypress font-medium">Protocole Tripartite Notarié sous Séquestre CDG (Art. 618-13 DOC ou Résiliation-Substitution simultanée).</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 font-semibold bg-vellum border-r border-hairline">Gain pour l'Acheteur B</td>
+                        <td class="p-3 border-r border-hairline text-stone-600">Écart d'inflation massif (+100 %).</td>
+                        <td class="p-3 text-obsidian font-medium">Économie de 10 % à 16 % (prix lancement N-2 vs prix livraison) + 0 mois d'attente chantier.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Les 3 Piliers de valeur -->
+            <div class="grid grid-cols-3 gap-4">
+                <div class="border border-hairline bg-white p-4">
+                    <div class="font-mono text-[10px] text-crimson uppercase font-semibold">1. Pour le Cédant (Vendeur A)</div>
+                    <div class="font-serif text-xl text-obsidian mt-1">Sauvetage 100 % Cash</div>
+                    <p class="text-[11px] text-stone-600 mt-1 leading-relaxed">Récupère l'intégralité de son avance déclarée sous 21 jours chez le notaire, sans payer la pénalité de 10 % et avec 0 % de commission.</p>
+                </div>
+                <div class="border border-hairline bg-white p-4">
+                    <div class="font-mono text-[10px] text-cypress uppercase font-semibold">2. Pour l'Acquéreur (Acheteur B)</div>
+                    <div class="font-serif text-xl text-obsidian mt-1">Neuf au Prix Ancien</div>
+                    <p class="text-[11px] text-stone-600 mt-1 leading-relaxed">Reprend un bien presque achevé au prix du contrat d'il y a 2 ans (-12 % en moyenne) avec une commission réduite à 1,5 % HT.</p>
+                </div>
+                <div class="border border-hairline bg-white p-4">
+                    <div class="font-mono text-[10px] text-bronze uppercase font-semibold">3. Pour le Promoteur</div>
+                    <div class="font-serif text-xl text-obsidian mt-1">Déblocage du Solde</div>
+                    <p class="text-[11px] text-stone-600 mt-1 leading-relaxed">Remplace un client insolvable par un client solvable qui paie immédiatement les 70 %-80 % restants, évitant tout procès ANCFCC.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center border-t border-hairline pt-3 font-mono text-[10px] text-stone-400">
+            <span>CONFIDENTIEL — MAKHRAJ MAROC</span>
+            <span>PAGE 02 / 06</span>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         PAGE 3 : ÉTUDE DE MARCHÉ, PREUVES BAM & ANATOMIE DU MOIS 22
+    ====================================================================== -->
+    <div class="a4-page">
+        <div>
+            <div class="flex justify-between items-center border-b border-hairline pb-3 mb-8 font-mono text-[10px] text-stone-500 uppercase tracking-widest">
+                <span>MAKHRAJ IMMO — BUSINESS PLAN (2026–2029)</span>
+                <span>SECTION 02 // ÉTUDE DE MARCHÉ & PREUVES LÉGALES</span>
+            </div>
+
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-bronze font-semibold">II. Analyse du Problème & Quantification du Marché Marocain</span>
+            <h2 class="font-serif text-4xl text-obsidian mt-1 mb-4">
+                Pourquoi un acheteur verse 300 000 MAD avant d'être bloqué au « Mois 22 »
+            </h2>
+
+            <p class="text-xs text-stone-600 leading-relaxed mb-5">
+                Au Maroc, aucune banque ne peut octroyer un contrat de prêt immobilier définitif (classique ou <em>Mourabaha</em>) lors de la réservation sur plan, car le <strong>Titre Foncier Individuel</strong> n'est créé qu'après l'achèvement des travaux et la délivrance du Permis d'Habiter (18 à 24 mois plus tard). L'acheteur verse donc ses avances sur la base d'un simple « accord de principe » bancaire dont la validité expire après 60 jours.
+            </p>
+
+            <!-- Frise chronologique du piège -->
+            <div class="grid grid-cols-4 border border-hairline bg-white divide-x divide-hairline mb-6">
+                <div class="p-4">
+                    <div class="font-mono text-[10px] text-stone-400">MOIS 01 • RÉSERVATION</div>
+                    <div class="font-semibold text-xs text-obsidian mt-1">Accord de principe verbal</div>
+                    <p class="text-[10px] text-stone-500 mt-1 leading-relaxed">L'acheteur verse 150k à 200k MAD. Le délai légal de rétractation de 30 jours (Art. 618-3 quater) expire.</p>
+                </div>
+                <div class="p-4">
+                    <div class="font-mono text-[10px] text-stone-400">MOIS 12 • GROS ŒUVRES</div>
+                    <div class="font-semibold text-xs text-obsidian mt-1">2ème appel de fonds</div>
+                    <p class="text-[10px] text-stone-500 mt-1 leading-relaxed">Versement de 100k MAD supplémentaires. 300k MAD sont immobilisés sans titre foncier individuel.</p>
+                </div>
+                <div class="p-4 bg-crimson/[0.04]">
+                    <div class="font-mono text-[10px] text-crimson font-semibold">MOIS 22 • LIVRAISON</div>
+                    <div class="font-semibold text-xs text-crimson mt-1">Refus du crédit définitif</div>
+                    <p class="text-[10px] text-stone-600 mt-1 leading-relaxed">Taux d'endettement dépassé, baisse de revenus, hausse des taux ou écart d'expertise Mourabaha.</p>
+                </div>
+                <div class="p-4 bg-cypress/[0.05]">
+                    <div class="font-mono text-[10px] text-cypress font-semibold">MOIS 23 • MAKHRAJ</div>
+                    <div class="font-semibold text-xs text-cypress mt-1">Substitution Notariée</div>
+                    <p class="text-[10px] text-stone-600 mt-1 leading-relaxed">Remplacement par un acheteur solvable sous séquestre CDG : 100 % de l'avance sauvée en 21 jours.</p>
+                </div>
+            </div>
+
+            <!-- Tableau des Sources Institutionnelles -->
+            <h3 class="font-serif text-2xl text-obsidian mb-3">Données Macroéconomiques & Sources Institutionnelles</h3>
+            <table class="w-full text-left border-collapse border border-hairline text-[11px] bg-white mb-6">
+                <thead>
+                    <tr class="bg-stone-100 font-mono text-[10px] uppercase text-stone-600 border-b border-hairline">
+                        <th class="p-3 border-r border-hairline">Indicateur / Texte</th>
+                        <th class="p-3 border-r border-hairline">Donnée Chiffrée</th>
+                        <th class="p-3 border-r border-hairline">Source Officielle</th>
+                        <th class="p-3">Impact Direct sur l'Activité MAKHRAJ</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-hairline">
+                    <tr>
+                        <td class="p-2.5 font-semibold border-r border-hairline">Créances en souffrance</td>
+                        <td class="p-2.5 font-mono text-crimson font-semibold border-r border-hairline">102,3 MMDH (8,2%)</td>
+                        <td class="p-2.5 border-r border-hairline text-stone-500">Bank Al-Maghrib (BAM)</td>
+                        <td class="p-2.5 text-stone-600">Filtrage sévère des comités des risques au déblocage final des crédits.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-semibold border-r border-hairline">Créances sensibles</td>
+                        <td class="p-2.5 font-mono text-obsidian border-r border-hairline">Circulaire 1/W/2025</td>
+                        <td class="p-2.5 border-r border-hairline text-stone-500">Bank Al-Maghrib (BAM)</td>
+                        <td class="p-2.5 text-stone-600">Rejet des dossiers ayant subi une baisse de revenus ou saisie en cours de chantier.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-semibold border-r border-hairline">Entonnoir Daam Sakane</td>
+                        <td class="p-2.5 font-mono text-obsidian border-r border-hairline">> 108 000 acquéreurs</td>
+                        <td class="p-2.5 border-r border-hairline text-stone-500">Ministère de l'Habitat</td>
+                        <td class="p-2.5 text-stone-600">Délai de 30j strict pour signer chez le notaire ; fort taux d'échec bancaire.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-semibold border-r border-hairline">Pénalité légale VEFA</td>
+                        <td class="p-2.5 font-mono text-crimson font-semibold border-r border-hairline">15 % à 20 % / 10 % total</td>
+                        <td class="p-2.5 border-r border-hairline text-stone-500">Loi 107-12 (Art. 618-14 DOC)</td>
+                        <td class="p-2.5 text-stone-600">Perte sèche de 50 000 à 200 000 MAD pour tout acheteur qui résilie seul.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Quantification TAM / SAM / SOM -->
+            <h3 class="font-serif text-2xl text-obsidian mb-3">Dimensionnement du Marché Adressable (TAM / SAM / SOM)</h3>
+            <div class="grid grid-cols-3 gap-4 font-mono">
+                <div class="bg-white border border-hairline p-4">
+                    <div class="text-[10px] text-stone-400 uppercase">TAM • Marché National Défaut VEFA</div>
+                    <div class="text-xl font-semibold text-obsidian mt-1">13 500 unités/an</div>
+                    <div class="text-xs text-stone-600 font-sans mt-1">~13,5 % de taux d'abandon sur ~100 000 réservations annuelles sur plan (GMV : 12,1 MMDH).</div>
+                </div>
+                <div class="bg-white border border-hairline p-4">
+                    <div class="text-[10px] text-bronze uppercase font-semibold">SAM • Cible 100% Déclarée (Casa-Rabat-Tanger)</div>
+                    <div class="text-xl font-semibold text-obsidian mt-1">4 000 unités/an</div>
+                    <div class="text-xs text-stone-600 font-sans mt-1">Biens Moyen/Haut Standing (700k à 3,5M MAD, prix moyen 1,3M MAD) = <strong>5,2 MMDH de GMV/an</strong>.</div>
+                </div>
+                <div class="bg-obsidian text-white p-4">
+                    <div class="text-[10px] text-emerald-400 uppercase">SOM • Objectif Année 3 (11% du SAM)</div>
+                    <div class="text-xl font-semibold text-white mt-1">450 ventes/an</div>
+                    <div class="text-xs text-stone-300 font-sans mt-1">Volume transigé : <strong>585 M MAD/an</strong> générant <strong>11,7 M MAD HT</strong> d'honoraires nets.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center border-t border-hairline pt-3 font-mono text-[10px] text-stone-400">
+            <span>CONFIDENTIEL — MAKHRAJ MAROC</span>
+            <span>PAGE 03 / 06</span>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         PAGE 4 : INGÉNIERIE JURIDIQUE, FISCALE & INCITATION PROMOTEUR
+    ====================================================================== -->
+    <div class="a4-page">
+        <div>
+            <div class="flex justify-between items-center border-b border-hairline pb-3 mb-8 font-mono text-[10px] text-stone-500 uppercase tracking-widest">
+                <span>MAKHRAJ IMMO — BUSINESS PLAN (2026–2029)</span>
+                <span>SECTION 03 // ARCHITECTURE JURIDIQUE, FISCALE & B2B</span>
+            </div>
+
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-bronze font-semibold">III. Ingénierie Notariale & Alignement des Promoteurs</span>
+            <h2 class="font-serif text-4xl text-obsidian mt-1 mb-5">
+                Comment opérer sans double taxation DGI et avec l'accord du promoteur
+            </h2>
+
+            <!-- Les 2 véhicules juridiques -->
+            <div class="grid grid-cols-2 gap-5 mb-6">
+                <div class="bg-white border border-hairline p-5">
+                    <div class="font-mono text-[10px] uppercase text-cypress font-semibold mb-1">Véhicule Juridique A • VEFA Loi 107-12</div>
+                    <h3 class="font-serif text-2xl text-obsidian mb-2">Cession Légale (Art. 618-13 du DOC)</h3>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        Lorsque le contrat initial est un contrat préliminaire VEFA inscrit, l'article 618-13 du DOC dispose que <em>« l'acquéreur peut céder les droits qu'il tient d'un contrat de vente d'immeuble en l'état futur d'achèvement à une tierce personne après notification au vendeur. Elle substitue de plein droit le cessionnaire au cédant »</em>. Aucune opposition du promoteur n'est recevable.
+                    </p>
+                </div>
+
+                <div class="bg-white border border-hairline p-5">
+                    <div class="font-mono text-[10px] uppercase text-bronze font-semibold mb-1">Véhicule Juridique B • Compromis (85% du marché)</div>
+                    <h3 class="font-serif text-2xl text-obsidian mb-2">Protocole Tripartite de Substitution</h3>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        Pour éviter que la Direction Générale des Impôts (DGI) ne requalifie la cession en « double vente » (taxée à 4 % + 4 %), l'Étude Notariale partenaire instrumente un <strong>Acte Tripartite de Résiliation Amiable avec Substitution Simultanée</strong> (droit fixe de 200 MAD) accompagné d'une délégation de paiement (Art. 217 DOC) via le compte séquestre CDG.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pourquoi le promoteur dit OUI -->
+            <h3 class="font-serif text-2xl text-obsidian mb-3">Pourquoi le Promoteur Immobilier accepte systématiquement la substitution</h3>
+            <p class="text-xs text-stone-600 leading-relaxed mb-4">
+                Contrairement à une idée reçue, appliquer la clause pénale à un client insolvable est une opération perdante pour le promoteur : l'avance initiale a déjà été consommée dans les travaux, et le litige bloque l'encaissement des 70 % à 80 % restants.
+            </p>
+
+            <table class="w-full text-left border-collapse border border-hairline text-[11px] bg-white mb-6">
+                <thead>
+                    <tr class="bg-obsidian text-white font-mono text-[10px] uppercase">
+                        <th class="p-3 border-r border-stone-700">Enjeu Financier Promoteur</th>
+                        <th class="p-3 border-r border-stone-700">Scénario Confiscation / Litige avec A</th>
+                        <th class="p-3">Scénario Substitution MAKHRAJ avec B</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-hairline">
+                    <tr>
+                        <td class="p-2.5 font-semibold bg-vellum border-r border-hairline">Encaissement du solde (ex: 900k MAD)</td>
+                        <td class="p-2.5 border-r border-hairline text-crimson font-medium">0 MAD encaissé pendant 12 à 24 mois.</td>
+                        <td class="p-2.5 text-cypress font-semibold">+900 000 MAD encaissés sous 15 jours.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-semibold bg-vellum border-r border-hairline">Décaissement de trésorerie</td>
+                        <td class="p-2.5 border-r border-hairline text-stone-600">Le promoteur doit sortir 180 000 MAD de sa poche pour rembourser le reliquat à A.</td>
+                        <td class="p-2.5 text-obsidian font-medium">0 MAD à décaisser (B rembourse directement A via le séquestre CDG du Notaire).</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-semibold bg-vellum border-r border-hairline">Risque sur le Titre Foncier (ANCFCC)</td>
+                        <td class="p-2.5 border-r border-hairline text-crimson font-medium">Prénotation judiciaire (تقييد احتياطي) gelant le bien 2 à 3 ans au tribunal.</td>
+                        <td class="p-2.5 text-cypress font-semibold">Quitus définitif signé chez le notaire (Zéro litige).</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-semibold bg-vellum border-r border-hairline">Intérêts bancaires CPI (6,5% - 7%/an)</td>
+                        <td class="p-2.5 border-r border-hairline text-stone-600">~5 000 MAD/mois d'agios bancaires supportés par lot non soldé.</td>
+                        <td class="p-2.5 text-obsidian font-medium">Mainlevée immédiate et arrêt des agios CPI.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-semibold bg-vellum border-r border-hairline">Coût commercial de revente (CAC)</td>
+                        <td class="p-2.5 border-r border-hairline text-stone-600">2,5 % à 4 % de frais marketing et commissions internes.</td>
+                        <td class="p-2.5 text-cypress font-semibold">0 MAD (Honoraires payés par l'acheteur B).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Anatomie d'un deal réel -->
+            <div class="bg-vellum border border-hairline p-4">
+                <div class="font-mono text-[10px] uppercase tracking-wider text-bronze font-semibold mb-2">
+                    Étude de Cas Réelle — Appartement F3 Harhoura / Témara (98 m²)
+                </div>
+                <div class="grid grid-cols-4 gap-3 font-mono text-xs">
+                    <div>
+                        <span class="text-[10px] text-stone-500 block">Prix Contrat 2024</span>
+                        <strong class="text-obsidian">1 225 000 MAD</strong>
+                    </div>
+                    <div>
+                        <span class="text-[10px] text-stone-500 block">Prix Promoteur 2026</span>
+                        <strong class="text-stone-500 line-through">1 390 000 MAD</strong>
+                    </div>
+                    <div>
+                        <span class="text-[10px] text-stone-500 block">Avance Sauvée pour A</span>
+                        <strong class="text-cypress">300 000 MAD (100%)</strong>
+                    </div>
+                    <div>
+                        <span class="text-[10px] text-stone-500 block">Gain Net Acheteur B</span>
+                        <strong class="text-bronze">+146 625 MAD nets</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center border-t border-hairline pt-3 font-mono text-[10px] text-stone-400">
+            <span>CONFIDENTIEL — MAKHRAJ MAROC</span>
+            <span>PAGE 04 / 06</span>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         PAGE 5 : BUSINESS MODEL, UNIT ECONOMICS & P&L SUR 3 ANS
+    ====================================================================== -->
+    <div class="a4-page">
+        <div>
+            <div class="flex justify-between items-center border-b border-hairline pb-3 mb-8 font-mono text-[10px] text-stone-500 uppercase tracking-widest">
+                <span>MAKHRAJ IMMO — BUSINESS PLAN (2026–2029)</span>
+                <span>SECTION 04 // PLAN FINANCIER & UNIT ECONOMICS</span>
+            </div>
+
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-bronze font-semibold">IV. Modèle de Revenus & Projections Financières (2026–2029)</span>
+            <h2 class="font-serif text-4xl text-obsidian mt-1 mb-5">
+                Un modèle à très forte marge opérationnelle (Break-Even : 2,5 ventes/mois)
+            </h2>
+
+            <!-- Unit Economics -->
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="bg-white border border-hairline p-4">
+                    <div class="font-mono text-[10px] text-stone-400 uppercase">Source de Revenu #1</div>
+                    <div class="font-mono text-lg font-semibold text-obsidian mt-1">1,50 % HT (Acheteur)</div>
+                    <p class="text-[11px] text-stone-600 mt-1">Soit <strong>19 500 MAD HT</strong> sur un panier moyen de 1,3M MAD (40% moins cher qu'une agence classique).</p>
+                </div>
+                <div class="bg-white border border-hairline p-4">
+                    <div class="font-mono text-[10px] text-stone-400 uppercase">Source de Revenu #2</div>
+                    <div class="font-mono text-lg font-semibold text-cypress mt-1">0,70 % (Courtage Banque)</div>
+                    <p class="text-[11px] text-stone-600 mt-1">Commission B2B versée par la banque sur le crédit du nouvel acheteur = <strong>~3 570 MAD HT</strong> pondéré.</p>
+                </div>
+                <div class="bg-white border border-hairline p-4">
+                    <div class="font-mono text-[10px] text-stone-400 uppercase">Source de Revenu #3</div>
+                    <div class="font-mono text-lg font-semibold text-bronze mt-1">3 000 MAD HT (Forfait)</div>
+                    <p class="text-[11px] text-stone-600 mt-1">Frais fixes de constitution et certification du dossier notarial prélevés uniquement au succès.</p>
+                </div>
+            </div>
+
+            <!-- Compte de résultat prévisionnel -->
+            <h3 class="font-serif text-2xl text-obsidian mb-3">Compte d'Exploitation Prévisionnel sur 3 Exercices (en MAD HT)</h3>
+            <table class="w-full text-left border-collapse border border-hairline text-[11px] bg-white mb-6 font-mono">
+                <thead>
+                    <tr class="bg-obsidian text-white text-[10px] uppercase">
+                        <th class="p-3 font-sans">Indicateurs Opérationnels & Financiers</th>
+                        <th class="p-3 text-right">Année 1 (Casa-Rabat-Témara)</th>
+                        <th class="p-3 text-right">Année 2 (+Tanger & MRE)</th>
+                        <th class="p-3 text-right">Année 3 (Scale National)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-hairline">
+                    <tr>
+                        <td class="p-2.5 font-sans font-medium bg-vellum">Contrats en détresse audités & publiés</td>
+                        <td class="p-2.5 text-right">450 unités</td>
+                        <td class="p-2.5 text-right">1 200 unités</td>
+                        <td class="p-2.5 text-right">2 500 unités</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-sans font-semibold bg-vellum">Substitutions actées chez le Notaire (Taux conv.)</td>
+                        <td class="p-2.5 text-right font-semibold text-obsidian">45 ventes (10%)</td>
+                        <td class="p-2.5 text-right font-semibold text-obsidian">180 ventes (15%)</td>
+                        <td class="p-2.5 text-right font-semibold text-obsidian">450 ventes (18%)</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-sans text-stone-500 bg-vellum">Volume d'Actifs Transigés (GMV)</td>
+                        <td class="p-2.5 text-right text-stone-500">58 500 000 MAD</td>
+                        <td class="p-2.5 text-right text-stone-500">234 000 000 MAD</td>
+                        <td class="p-2.5 text-right text-stone-500">585 000 000 MAD</td>
+                    </tr>
+                    <tr class="bg-cypress/10 font-semibold text-obsidian">
+                        <td class="p-3 font-sans">CHIFFRE D'AFFAIRES NET (ARPU : 26 000 MAD HT)</td>
+                        <td class="p-3 text-right">1 170 000 MAD</td>
+                        <td class="p-3 text-right">4 680 000 MAD</td>
+                        <td class="p-3 text-right">11 700 000 MAD</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-sans text-stone-600">Masse Salariale Fixe (Juristes VEFA + Closers)</td>
+                        <td class="p-2.5 text-right text-crimson">- 336 000 MAD</td>
+                        <td class="p-2.5 text-right text-crimson">- 990 000 MAD</td>
+                        <td class="p-2.5 text-right text-crimson">- 2 100 000 MAD</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-sans text-stone-600">Commissions Variables Closers (2 000 MAD / deal)</td>
+                        <td class="p-2.5 text-right text-crimson">- 90 000 MAD</td>
+                        <td class="p-2.5 text-right text-crimson">- 360 000 MAD</td>
+                        <td class="p-2.5 text-right text-crimson">- 900 000 MAD</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-sans text-stone-600">Budget Marketing & Acquisition Digitale (Meta/Google)</td>
+                        <td class="p-2.5 text-right text-crimson">- 300 000 MAD</td>
+                        <td class="p-2.5 text-right text-crimson">- 850 000 MAD</td>
+                        <td class="p-2.5 text-right text-crimson">- 1 800 000 MAD</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-sans text-stone-600">Infrastructure Tech, CRM, Siège & Frais Juridiques</td>
+                        <td class="p-2.5 text-right text-crimson">- 120 000 MAD</td>
+                        <td class="p-2.5 text-right text-crimson">- 360 000 MAD</td>
+                        <td class="p-2.5 text-right text-crimson">- 700 000 MAD</td>
+                    </tr>
+                    <tr class="bg-obsidian text-white font-semibold">
+                        <td class="p-3 font-sans">EBITDA (RÉSULTAT D'EXPLOITATION AVANT IMPÔTS)</td>
+                        <td class="p-3 text-right text-emerald-400">+ 324 000 MAD</td>
+                        <td class="p-3 text-right text-emerald-400">+ 2 120 000 MAD</td>
+                        <td class="p-3 text-right text-emerald-400">+ 6 200 000 MAD</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-sans font-semibold bg-vellum">Marge d'EBITDA (%)</td>
+                        <td class="p-2.5 text-right font-semibold text-cypress">27,7 %</td>
+                        <td class="p-2.5 text-right font-semibold text-cypress">45,3 %</td>
+                        <td class="p-2.5 text-right font-semibold text-cypress">53,0 %</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Ratios Clés CAC / LTV -->
+            <div class="grid grid-cols-3 gap-4 bg-vellum border border-hairline p-4">
+                <div>
+                    <div class="font-mono text-[10px] text-stone-500 uppercase">Coût d'Acquisition (CAC Deal)</div>
+                    <div class="font-mono text-base font-semibold text-obsidian mt-0.5">6 660 MAD / vente</div>
+                    <div class="text-[10px] text-stone-500">44 Leads qualifiés pour 1 acte signé</div>
+                </div>
+                <div class="border-l border-hairline pl-4">
+                    <div class="font-mono text-[10px] text-stone-500 uppercase">Ratio LTV / CAC (Année 1)</div>
+                    <div class="font-mono text-base font-semibold text-cypress mt-0.5">3,9x (Année 1) → 6,5x (A3)</div>
+                    <div class="text-[10px] text-stone-500">Grâce à l'apport gratuit des banquiers</div>
+                </div>
+                <div class="border-l border-hairline pl-4">
+                    <div class="font-mono text-[10px] text-stone-500 uppercase">Besoin en Fonds de Roulement</div>
+                    <div class="font-mono text-base font-semibold text-obsidian mt-0.5">180 000 MAD (Amorçage)</div>
+                    <div class="text-[10px] text-stone-500">Couvre 3 mois d'OPEX avant rentabilité</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center border-t border-hairline pt-3 font-mono text-[10px] text-stone-400">
+            <span>CONFIDENTIEL — MAKHRAJ MAROC</span>
+            <span>PAGE 05 / 06</span>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         PAGE 6 : GO-TO-MARKET, FEUILLE DE ROUTE & MATRICE DES RISQUES
+    ====================================================================== -->
+    <div class="a4-page">
+        <div>
+            <div class="flex justify-between items-center border-b border-hairline pb-3 mb-8 font-mono text-[10px] text-stone-500 uppercase tracking-widest">
+                <span>MAKHRAJ IMMO — BUSINESS PLAN (2026–2029)</span>
+                <span>SECTION 05 // STRATÉGIE GO-TO-MARKET & GESTION DES RISQUES</span>
+            </div>
+
+            <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-bronze font-semibold">V. Stratégie d'Exécution & Maîtrise des Risques</span>
+            <h2 class="font-serif text-4xl text-obsidian mt-1 mb-5">
+                Déploiement chirurgical sur l'axe Témara — Rabat — Casablanca
+            </h2>
+
+            <!-- Les 3 Canaux d'Acquisition -->
+            <h3 class="font-serif text-2xl text-obsidian mb-3">1. Les 3 Canaux d'Acquisition à Coût Marginal</h3>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="bg-white border border-hairline p-4">
+                    <div class="font-mono text-[10px] text-cypress font-semibold uppercase">Canal #1 • Banquiers & Courtiers</div>
+                    <div class="font-semibold text-xs text-obsidian mt-1">Le Réseau d'Apporteurs Bancaires</div>
+                    <p class="text-[11px] text-stone-600 mt-1 leading-relaxed">
+                        Partenariat avec les chargés de clientèle immobilière (CIH, Attijari, BCP) : lorsqu'un client voit son prêt refusé à la livraison, le banquier nous l'oriente pour sauver son avance, et nous faisons financer le crédit du nouvel acheteur dans son agence.
+                    </p>
+                </div>
+                <div class="bg-white border border-hairline p-4">
+                    <div class="font-mono text-[10px] text-bronze font-semibold uppercase">Canal #2 • Simulateur Viral</div>
+                    <div class="font-semibold text-xs text-obsidian mt-1">Le Calculateur de Clause Pénale</div>
+                    <p class="text-[11px] text-stone-600 mt-1 leading-relaxed">
+                        Campagnes Meta/TikTok Ads ciblant Témara, Harhoura, Rabat, Bouskoura et la diaspora MRE (France/Belgique) autour du simulateur : <em>« Calculez combien le promoteur va retenir sur votre avance vs Sortie 100% Cash »</em>.
+                    </p>
+                </div>
+                <div class="bg-white border border-hairline p-4">
+                    <div class="font-mono text-[10px] text-obsidian font-semibold uppercase">Canal #3 • Club Investisseurs</div>
+                    <div class="font-semibold text-xs text-obsidian mt-1">Distribution Privée sur WhatsApp</div>
+                    <p class="text-[11px] text-stone-600 mt-1 leading-relaxed">
+                        Diffusion hebdomadaire des « Bordereaux d'Arbitrage » auprès d'une liste qualifiée d'investisseurs locatifs et cadres disposant d'un apport Cash de 250k à 600k MAD prêt à être consigné chez le notaire.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Matrice des Risques Spécifiques au Maroc -->
+            <h3 class="font-serif text-2xl text-obsidian mb-3">2. Matrice des Risques Terrain & Parades Opérationnelles</h3>
+            <table class="w-full text-left border-collapse border border-hairline text-[11px] bg-white mb-6">
+                <thead>
+                    <tr class="bg-stone-100 font-mono text-[10px] uppercase text-stone-600 border-b border-hairline">
+                        <th class="p-3 border-r border-hairline">Risque Identifié au Maroc</th>
+                        <th class="p-3 border-r border-hairline">Criticité</th>
+                        <th class="p-3">Protocole de Parade MAKHRAJ</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-hairline">
+                    <tr>
+                        <td class="p-2.5 font-semibold border-r border-hairline">Présence de « Noir » (Dessous-de-table non déclaré)</td>
+                        <td class="p-2.5 font-mono text-crimson font-semibold border-r border-hairline">ÉLEVÉE</td>
+                        <td class="p-2.5 text-stone-600">Rejet systématique à l'audit. La plateforme ne traite que les projets Moyen/Haut Standing 100 % déclarés sur quittances officielles.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-semibold border-r border-hairline">Tentative de contournement entre A et B</td>
+                        <td class="p-2.5 font-mono text-bronze font-semibold border-r border-hairline">MOYENNE</td>
+                        <td class="p-2.5 text-stone-600">L'adresse exacte et le nom du promoteur sont masqués sur le bordereau public. Signature électronique d'un Bon de Visite / Mandat de Substitution avant divulgation.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-semibold border-r border-hairline">Détournement de l'acheteur par le commercial du promoteur</td>
+                        <td class="p-2.5 font-mono text-crimson font-semibold border-r border-hairline">ÉLEVÉE</td>
+                        <td class="p-2.5 text-stone-600">Contournement du showroom commercial : les dossiers sont traités directement avec la Direction Juridique/Financière du promoteur et l'Étude Notariale.</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2.5 font-semibold border-r border-hairline">Promoteur exigeant des frais de transfert</td>
+                        <td class="p-2.5 font-mono text-stone-600 font-semibold border-r border-hairline">FAIBLE</td>
+                        <td class="p-2.5 text-stone-600">Octroi d'une indemnité administrative d'avenant de 1 % au promoteur (le vendeur A sauve 90 % à 95 % de son avance au lieu de perdre 10 % du prix total).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Feuille de route 90 jours -->
+            <h3 class="font-serif text-2xl text-obsidian mb-3">3. Feuille de Route de Lancement (90 Premiers Jours)</h3>
+            <div class="grid grid-cols-3 gap-4 font-mono text-xs">
+                <div class="border-l-2 border-cypress bg-white p-3.5 border border-hairline">
+                    <div class="text-[10px] text-cypress font-semibold">JOURS 01 À 30 • INFRASTRUCTURE</div>
+                    <div class="font-sans font-semibold text-obsidian mt-1">Bouclier Notarial & Acquisition</div>
+                    <p class="font-sans text-[11px] text-stone-600 mt-1">Convention avec 2 études notariales (Rabat & Casa), mise en ligne du simulateur Makhraj, sourcing des 25 premiers contrats à Harhoura/Témara et Bouskoura.</p>
+                </div>
+                <div class="border-l-2 border-bronze bg-white p-3.5 border border-hairline">
+                    <div class="text-[10px] text-bronze font-semibold">JOURS 31 À 60 • PREUVE DE MARCHÉ</div>
+                    <div class="font-sans font-semibold text-obsidian mt-1">5 Premières Substitutions Signées</div>
+                    <p class="font-sans text-[11px] text-stone-600 mt-1">Clôture des 5 premiers actes tripartites sous séquestre CDG (~130 000 MAD de CA HT), création de la base de 500 investisseurs Cash qualifiés.</p>
+                </div>
+                <div class="border-l-2 border-obsidian bg-white p-3.5 border border-hairline">
+                    <div class="text-[10px] text-obsidian font-semibold">JOURS 61 À 90 • ACCÉLÉRATION B2B</div>
+                    <div class="font-sans font-semibold text-obsidian mt-1">Partenariats Banques & Promoteurs</div>
+                    <p class="font-sans text-[11px] text-stone-600 mt-1">Signature d'accords d'apporteurs d'affaires avec 3 réseaux bancaires et 5 promoteurs régionaux sur l'axe Rabat-Casablanca.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center border-t border-hairline pt-3 font-mono text-[10px] text-stone-400">
+            <span>CONFIDENTIEL — MAKHRAJ MAROC (DOCUMENT FIN D'ÉDITION)</span>
+            <span>PAGE 06 / 06</span>
+        </div>
+    </div>
+
+</body>
+</html>
