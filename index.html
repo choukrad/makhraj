@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAKHRAJ — Chambre de Substitution & Liquidité VEFA au Maroc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Instrument Serif', 'Georgia', 'serif'],
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        arabic: ['Noto Naskh Arabic', 'serif'],
+                    },
+                    colors: {
+                        vellum: '#FBF9F5',      // Fond principal Lombard Odier
+                        alabaster: '#F3F0EA',   // Fond secondaire chaud
+                        obsidian: '#0B0F17',    // Encre noire profonde Ramp
+                        cypress: '#0D3B2E',     // Vert institutionnel privé
+                        Chartreuse: '#D9F99D',  // Micro-accent analytique Ramp
+                        bronze: '#8C6D46',      // Filets et accents patrimoniaux
+                        crimson: '#881337',     // Alerte pénalité sobre
+                        hairline: '#E4E0D8'     // Filet architectural 1px
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FBF9F5;
+            color: #0B0F17;
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+            -webkit-font-smoothing: antialiased;
+        }
+        .tabular-nums { font-variant-numeric: tabular-nums; }
+        
+        /* Sliders façon Ramp : ultra-précis et rectangulaires */
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: #E4E0D8;
+            height: 2px;
+            width: 100%;
+            touch-action: pan-y;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 22px;
+            background: #0B0F17;
+            border: 1px solid #FBF9F5;
+            cursor: ew-resize;
+            transition: background 0.15s ease, transform 0.1s ease;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            background: #0D3B2E;
+            transform: scaleY(1.1);
+        }
+
+        /* Grille suisse subtile */
+        .swiss-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(228, 224, 216, 0.35) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(228, 224, 216, 0.35) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="selection:bg-cypress selection:text-white">
+
+    <!-- TOP SYSTEM BAR (STYLE RAMP + CONFORMITÉ LOMBARD ODIER) -->
+    <div class="bg-obsidian text-stone-300 border-b border-stone-800 text-[11px]">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 h-9 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span class="font-mono uppercase tracking-widest text-[10px] text-stone-400">Protocole Loi 107-12 (Art. 618-13 DOC)</span>
+                <span class="hidden md:inline text-stone-700">|</span>
+                <span class="hidden md:inline text-stone-300">Exécution sous compte séquestre Caisse de Dépôt et de Gestion (CDG)</span>
+            </div>
+            <div class="flex items-center gap-6 font-mono text-[10px] text-stone-400">
+                <span>BAM SINISTRALITÉ : 102,3 MMDH (8,2%)</span>
+                <span class="hidden sm:inline text-stone-700">|</span>
+                <a href="#terminal" class="text-white hover:underline hidden sm:inline">ACCÈS SALLE SECONDAIRE →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION ARCHITECTURALE -->
+    <header class="sticky top-0 z-40 bg-vellum/95 backdrop-blur-md border-b border-hairline">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+            
+            <!-- IDENTITÉ -->
+            <div class="flex items-center gap-10">
+                <a href="#" class="flex items-baseline gap-3 group">
+                    <span class="font-serif text-3xl tracking-tight text-obsidian">Makhraj</span>
+                    <span class="font-arabic text-base text-bronze font-semibold">مخرج</span>
+                    <span class="font-mono text-[9px] uppercase tracking-[0.22em] text-stone-400 border-l border-hairline pl-3">
+                        Maroc
+                    </span>
+                </a>
+
+                <nav class="hidden lg:flex items-center gap-8 text-[12px] font-medium text-stone-600">
+                    <a href="#these" class="hover:text-obsidian transition">I. Le Paradoxe du Mois 22</a>
+                    <a href="#simulateur" class="hover:text-obsidian transition">II. Calculateur d'Arbitrage</a>
+                    <a href="#terminal" class="hover:text-obsidian transition">III. Registre des Contrats</a>
+                    <a href="#ingenierie" class="hover:text-obsidian transition">IV. Architecture Fiscale</a>
+                </nav>
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="flex items-center gap-3">
+                <button onclick="openAuditModal('acheteur')" class="hidden sm:inline-flex items-center px-4 py-2.5 border border-hairline bg-white hover:border-obsidian text-xs font-medium text-obsidian transition">
+                    Portail Acquéreurs
+                </button>
+                <button onclick="openAuditModal('vendeur')" class="inline-flex items-center gap-2 px-5 py-2.5 bg-obsidian hover:bg-cypress text-white text-xs font-medium transition">
+                    <span>Soumettre un Contrat</span>
+                    <span class="font-mono text-[10px] text-stone-400">0% Frais</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION : ALLIANCE ÉDITORIALE (GAUCHE) & PRODUIT FINANCIER RAMP (DROITE) -->
+    <section class="relative border-b border-hairline swiss-grid">
+        <div class="max-w-[1400px] mx-auto grid lg:grid-cols-12">
+            
+            <!-- COLONNE ÉDITORIALE LOMBARD ODIER (7 COLONNES) -->
+            <div class="lg:col-span-7 px-4 sm:px-8 py-14 lg:py-24 lg:pr-16 border-b lg:border-b-0 lg:border-r border-hairline bg-vellum/90 flex flex-col justify-between">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-2.5 py-1 border border-hairline bg-white mb-8">
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-cypress font-semibold">Liquidité Secondaire VEFA</span>
+                        <span class="text-stone-300">•</span>
+                        <span class="text-[11px] text-stone-600">Rabat • Témara / Harhoura • Casablanca • Tanger</span>
+                    </div>
+
+                    <h1 class="font-serif text-5xl sm:text-6xl lg:text-[68px] text-obsidian leading-[1.03] tracking-tight mb-8">
+                        La sortie honorable <br>d'un engagement immobilier <span class="italic text-cypress">sur plan.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-stone-600 font-normal leading-relaxed max-w-2xl mb-6">
+                        Lorsqu'un comité de crédit bancaire refuse le financement final au moment de la livraison, l'acquéreur marocain perd entre 10 % et 20 % de clause pénale et subit jusqu'à 24 mois d'immobilisation. Makhraj structure la substitution notariale de votre contrat auprès d'investisseurs solvables, garantissant la restitution intégrale de vos avances au pair.
+                    </p>
+
+                    <p class="font-arabic text-base text-stone-700 border-r-2 border-bronze pr-4 mb-10 text-right max-w-xl">
+                        أول غرفة مقاصة قانونية بالمغرب للتخارج الآمن من عقود العقار في طور الإنجاز واسترجاع التسبيق كاملاً عبر حساب الودائع لدى الموثق (CDG) بدون أي عمولة على البائع.
+                    </p>
+                </div>
+
+                <div>
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-12">
+                        <button onclick="openAuditModal('vendeur')" class="px-7 py-4 bg-cypress hover:bg-obsidian text-white text-xs font-medium tracking-wide transition flex items-center justify-between sm:justify-center gap-4">
+                            <span>Demander un audit de sortie (Cédant)</span>
+                            <span class="font-mono">→</span>
+                        </button>
+                        <a href="#simulateur" class="px-7 py-4 bg-white border border-hairline hover:border-obsidian text-obsidian text-xs font-medium tracking-wide transition text-center">
+                            Calculer ma pénalité évitée
+                        </a>
+                    </div>
+
+                    <!-- MÉTRIQUES DE PIED DE HERO -->
+                    <div class="grid grid-cols-3 gap-6 pt-8 border-t border-hairline">
+                        <div>
+                            <div class="font-mono text-2xl sm:text-3xl font-medium text-obsidian">0,00 %</div>
+                            <div class="text-[11px] text-stone-500 mt-1">Commission facturée au cédant en difficulté</div>
+                        </div>
+                        <div class="border-l border-hairline pl-6">
+                            <div class="font-mono text-2xl sm:text-3xl font-medium text-cypress">100 %</div>
+                            <div class="text-[11px] text-stone-500 mt-1">Restitution des acomptes déclarés via CDG</div>
+                        </div>
+                        <div class="border-l border-hairline pl-6">
+                            <div class="font-mono text-2xl sm:text-3xl font-medium text-obsidian">21 j</div>
+                            <div class="text-[11px] text-stone-500 mt-1">Délai médian de clôture chez le notaire</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLONNE "PRODUCT UI" FAÇON RAMP.COM (5 COLONNES) -->
+            <div class="lg:col-span-5 bg-alabaster/70 p-6 sm:p-10 lg:p-12 flex flex-col justify-center">
+                
+                <!-- COMPOSANT D'APERÇU TRANSACTIONNEL RAMP -->
+                <div class="bg-white border border-hairline shadow-sm">
+                    <!-- En-tête du widget -->
+                    <div class="px-6 py-4 border-b border-hairline flex items-center justify-between bg-vellum">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-cypress"></span>
+                            <span class="font-mono text-[11px] uppercase tracking-wider font-medium text-obsidian">Bordereau d'Arbitrage Type</span>
+                        </div>
+                        <span class="font-mono text-[10px] px-2 py-0.5 bg-alabaster border border-hairline text-stone-600">
+                            RÉF. ART-618-13
+                        </span>
+                    </div>
+
+                    <!-- Corps du widget -->
+                    <div class="p-6 space-y-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="text-[11px] uppercase tracking-wider text-stone-400 font-mono">Actif Sous-Jacent</div>
+                                <div class="text-sm font-semibold text-obsidian mt-0.5">Appartement F3 • Harhoura (98 m²)</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[11px] uppercase tracking-wider text-stone-400 font-mono">Contrat 2024</div>
+                                <div class="font-mono text-sm font-semibold text-obsidian mt-0.5">1 225 000 MAD</div>
+                            </div>
+                        </div>
+
+                        <!-- Comparaison graphique style Ramp -->
+                        <div class="space-y-4 pt-4 border-t border-hairline">
+                            <div>
+                                <div class="flex justify-between text-xs mb-1.5">
+                                    <span class="text-stone-500">1. Désistement seul chez le promoteur (Clause 10%)</span>
+                                    <span class="font-mono text-crimson font-medium">-122 500 MAD perdus</span>
+                                </div>
+                                <div class="w-full h-6 bg-stone-100 flex overflow-hidden border border-stone-200">
+                                    <div class="bg-stone-400 h-full flex items-center pl-2 text-[10px] font-mono text-white" style="width: 59%">
+                                        Récupéré à 18 mois : 177 500 MAD
+                                    </div>
+                                    <div class="bg-crimson/90 h-full flex items-center justify-center text-[10px] font-mono text-white" style="width: 41%">
+                                        Pénalité
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs mb-1.5">
+                                    <span class="text-obsidian font-medium">2. Substitution Notariée Makhraj (0% Frais)</span>
+                                    <span class="font-mono text-cypress font-semibold">100% Préservé</span>
+                                </div>
+                                <div class="w-full h-6 bg-cypress flex items-center justify-between px-3 text-[10px] font-mono text-white">
+                                    <span>Virement Séquestre CDG sous 21 jours</span>
+                                    <span>300 000 MAD</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Flux d'exécution -->
+                        <div class="bg-vellum border border-hairline p-4 space-y-2.5 font-mono text-[11px]">
+                            <div class="flex justify-between text-stone-500">
+                                <span>Acompte Cédant remboursé au pair</span>
+                                <span class="text-obsidian font-medium">300 000 MAD</span>
+                            </div>
+                            <div class="flex justify-between text-stone-500">
+                                <span>Prix promoteur actuel (Bureau de vente)</span>
+                                <span class="line-through">1 390 000 MAD</span>
+                            </div>
+                            <div class="flex justify-between text-cypress pt-2 border-t border-hairline font-medium">
+                                <span>Gain immédiat pour l'Acquéreur entrant</span>
+                                <span>+165 000 MAD (-11,8%)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pied du widget -->
+                    <div class="px-6 py-3.5 bg-obsidian text-white flex items-center justify-between text-xs">
+                        <span class="font-mono text-[11px] text-stone-300">Double droit d'enregistrement DGI : 0 MAD</span>
+                        <a href="#simulateur" class="font-mono text-[11px] text-Chartreuse hover:underline">Tester avec mes chiffres →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION I : LE PARADOXE DU MOIS 22 (ARCHITECTURE SUISSE LOMBARD ODIER) -->
+    <section id="these" class="py-24 border-b border-hairline bg-vellum">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
+            
+            <div class="grid lg:grid-cols-12 gap-12 pb-16 border-b border-hairline">
+                <div class="lg:col-span-5">
+                    <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-bronze block mb-3">
+                        Chapitre I — Diagnostic Réglementaire
+                    </span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-obsidian leading-[1.08]">
+                        L'asymétrie structurelle du « Mois 22 » au Maroc.
+                    </h2>
+                </div>
+                <div class="lg:col-span-7 flex flex-col justify-end">
+                    <p class="text-sm sm:text-base text-stone-600 leading-relaxed">
+                        Contrairement aux marchés européens où le contrat de réservation est protégé par une condition suspensive d'obtention de prêt couvrant toute la durée de construction, la pratique bancaire marocaine dissocie <strong>l'accord de principe initial</strong> (valable 60 jours) de <strong>l'instruction hypothécaire finale</strong>, qui ne peut légalement intervenir qu'après l'éclatement du Titre Foncier Individuel (20 à 24 mois plus tard).
+                    </p>
+                </div>
+            </div>
+
+            <!-- MATRICE CHRONOLOGIQUE EN 4 COLONNES -->
+            <div class="grid md:grid-cols-4 border-b border-hairline divide-y md:divide-y-0 md:divide-x divide-hairline">
+                
+                <div class="py-10 md:pr-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between font-mono text-xs text-stone-400 mb-6">
+                            <span>01 / ENGAGEMENT</span>
+                            <span>MOIS 01</span>
+                        </div>
+                        <h3 class="font-serif text-2xl text-obsidian mb-3">La Simulation Non-Liante</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            Sur la foi d'une simulation bancaire verbale, l'acquéreur signe un contrat de réservation et décaisse 15 % à 25 % d'avance. Passé le délai légal de rétractation de <strong>30 jours</strong> (Art. 618-3 quater du DOC), les fonds sont verrouillés.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-hairline font-mono text-[11px] text-stone-500">
+                        Statut du titre : Titre Foncier Mère (Promoteur)
+                    </div>
+                </div>
+
+                <div class="py-10 md:px-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between font-mono text-xs text-stone-400 mb-6">
+                            <span>02 / IMMOBILISATION</span>
+                            <span>MOIS 12</span>
+                        </div>
+                        <h3 class="font-serif text-2xl text-obsidian mb-3">Les Appels de Tranches</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            À l'achèvement des gros œuvres, l'acquéreur verse une tranche complémentaire, portant son exposition entre <strong>250 000 et 500 000 MAD</strong>. Chez les MRE en échéancier direct, ce montant atteint 50 % de la valeur du bien.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-hairline font-mono text-[11px] text-stone-500">
+                        Liquidité secondaire classique : Nulle (0%)
+                    </div>
+                </div>
+
+                <div class="py-10 md:px-8 bg-crimson/[0.02] flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between font-mono text-xs text-crimson font-medium mb-6">
+                            <span>03 / IMPASSE BANCAIRE</span>
+                            <span>MOIS 22</span>
+                        </div>
+                        <h3 class="font-serif text-2xl text-crimson mb-3">Le Rejet du Comité des Risques</h3>
+                        <p class="text-xs text-stone-700 leading-relaxed">
+                            À la délivrance du Permis d'Habiter, l'instruction définitive du prêt échoue : durcissement réglementaire (Circulaire BAM 1/W/2025), baisse de revenus, hausse du taux d'endettement ou écart d'expertise en <em>Mourabaha</em>.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-crimson/20 font-mono text-[11px] text-crimson font-medium">
+                        Sanction : Pénalité de 10% à 20% + Rétention 18 mois
+                    </div>
+                </div>
+
+                <div class="py-10 md:pl-8 bg-cypress/[0.03] flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between font-mono text-xs text-cypress font-semibold mb-6">
+                            <span>04 / COMPENSATION</span>
+                            <span>MOIS 23</span>
+                        </div>
+                        <h3 class="font-serif text-2xl text-cypress mb-3">La Substitution Makhraj</h3>
+                        <p class="text-xs text-stone-700 leading-relaxed">
+                            Au lieu d'une résiliation destructrice de valeur, Makhraj introduit un tiers acquéreur solvable qui rembourse l'avance du cédant sur le compte séquestre CDG du Notaire et reprend le contrat à son prix d'origine.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-cypress/20 font-mono text-[11px] text-cypress font-semibold">
+                        Résultat : 100% du capital restitué en Cash
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SOURCES INSTITUTIONNELLES -->
+            <div class="pt-10 grid sm:grid-cols-3 gap-8 text-xs text-stone-500">
+                <div class="flex items-start gap-3">
+                    <span class="font-mono text-obsidian font-semibold">[01]</span>
+                    <p><strong>Bank Al-Maghrib :</strong> 102,3 Milliards MAD de créances en souffrance recensées (+3,7 %), imposant un filtrage prudentiel strict lors du déblocage des crédits immobiliers.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="font-mono text-obsidian font-semibold">[02]</span>
+                    <p><strong>Loi n° 107-12 (VEFA) :</strong> L'article 618-14 du DOC fixe l'indemnité de résiliation jusqu'à 20 % des avances payées ; les compromis de droit commun appliquent 10 % du prix total.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="font-mono text-obsidian font-semibold">[03]</span>
+                    <p><strong>Jurisprudence Commerciale :</strong> Le délai moyen de recouvrement judiciaire d'une avance auprès d'un promoteur devant les tribunaux de Casablanca et Rabat oscille entre 24 et 36 mois.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION II : CALCULATEUR INTERACTIF D'ARBITRAGE (DESIGN RAMP.COM) -->
+    <section id="simulateur" class="py-24 bg-alabaster border-b border-hairline">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
+            
+            <div class="max-w-3xl mb-14">
+                <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-bronze block mb-3">
+                    Chapitre II — Modélisation Financière
+                </span>
+                <h2 class="font-serif text-4xl sm:text-5xl text-obsidian leading-tight">
+                    Calculateur de préservation d'apport
+                </h2>
+                <p class="text-sm text-stone-600 mt-2">
+                    Déplacez les curseurs pour quantifier l'écart net entre une résiliation promoteur et une substitution notariale Makhraj.
+                </p>
+            </div>
+
+            <div class="bg-white border border-hairline grid lg:grid-cols-12">
+                
+                <!-- INPUTS (5 COLONNES) -->
+                <div class="lg:col-span-5 p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-hairline flex flex-col justify-between space-y-10">
+                    <div class="space-y-9">
+                        <!-- Curseur 1 -->
+                        <div>
+                            <div class="flex justify-between items-baseline mb-3">
+                                <label class="text-xs font-medium text-stone-600">Prix contractuel initial du bien</label>
+                                <span id="sim-prix-label" class="font-mono text-xl font-semibold text-obsidian tabular-nums">1 350 000 MAD</span>
+                            </div>
+                            <input id="sim-prix" type="range" min="500000" max="4500000" step="50000" value="1350000" oninput="calculateArbitrage()">
+                            <div class="flex justify-between font-mono text-[10px] text-stone-400 mt-2">
+                                <span>500 000 MAD</span>
+                                <span>2 500 000 MAD</span>
+                                <span>4 500 000 MAD</span>
+                            </div>
+                        </div>
+
+                        <!-- Curseur 2 -->
+                        <div>
+                            <div class="flex justify-between items-baseline mb-3">
+                                <label class="text-xs font-medium text-stone-600">Total des avances versées (Quittancées)</label>
+                                <span id="sim-avance-label" class="font-mono text-xl font-semibold text-cypress tabular-nums">320 000 MAD</span>
+                            </div>
+                            <input id="sim-avance" type="range" min="50000" max="1500000" step="10000" value="320000" oninput="calculateArbitrage()">
+                            <div class="flex justify-between font-mono text-[10px] text-stone-400 mt-2">
+                                <span>50 000 MAD</span>
+                                <span>750 000 MAD</span>
+                                <span>1 500 000 MAD</span>
+                            </div>
+                        </div>
+
+                        <!-- Sélecteur de régime -->
+                        <div>
+                            <label class="block text-xs font-medium text-stone-600 mb-2.5">Régime juridique de votre contrat actuel</label>
+                            <select id="sim-regime" onchange="calculateArbitrage()" class="w-full bg-vellum border border-hairline px-4 py-3.5 text-xs font-medium text-obsidian focus:outline-none focus:border-obsidian">
+                                <option value="compromis">Compromis / Contrat de réservation (Clause pénale : 10% du prix total)</option>
+                                <option value="vefa">Contrat VEFA officiel Loi 107-12 (Art. 618-14 : 15% à 20% des avances)</option>
+                            </select>
+                        </div>
+
+                        <!-- Sélecteur de vélocité -->
+                        <div>
+                            <label class="block text-xs font-medium text-stone-600 mb-2.5">Modalité de sortie souhaitée</label>
+                            <select id="sim-mode" onchange="calculateArbitrage()" class="w-full bg-vellum border border-hairline px-4 py-3.5 text-xs font-medium text-obsidian focus:outline-none focus:border-obsidian">
+                                <option value="pair">Sortie au pair — Zéro décote (Délai moyen : ~21 jours)</option>
+                                <option value="express">Sortie accélérée — Décote incitative de 4% sur avance (~7 jours)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-hairline text-[11px] text-stone-500 leading-relaxed">
+                        Les calculs intègrent la pratique standard des promoteurs immobiliers au Maroc consistant à retenir l'indemnité contractuelle et à différer le remboursement du solde jusqu'à la recommercialisation complète de l'unité.
+                    </div>
+                </div>
+
+                <!-- OUTPUTS COMPARATIFS FAÇON RAMP (7 COLONNES) -->
+                <div class="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between bg-vellum/40">
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-center justify-between border-b border-hairline pb-4">
+                            <span class="font-mono text-xs uppercase tracking-widest text-stone-500">Analyse Comparative de Liquidité</span>
+                            <span class="font-mono text-xs text-cypress font-medium">Honoraires Cédant : 0 MAD</span>
+                        </div>
+
+                        <!-- TABLEAU COMPARATIF DE PRÉCISION -->
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            
+                            <!-- Carte 1 : Défaut Classique -->
+                            <div class="bg-white border border-hairline p-6">
+                                <div class="font-mono text-[10px] uppercase tracking-widest text-crimson font-semibold mb-1">
+                                    Option A • Annulation Promoteur
+                                </div>
+                                <div class="text-xs text-stone-500 mb-6">Application de la clause pénale</div>
+
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="text-[11px] text-stone-400">Pénalité sèche confisquée</div>
+                                        <div id="out-penalite" class="font-mono text-2xl font-semibold text-crimson tabular-nums mt-0.5">- 135 000 MAD</div>
+                                    </div>
+                                    <div class="pt-3 border-t border-stone-100">
+                                        <div class="text-[11px] text-stone-400">Reliquat récupéré (après 12-24 mois)</div>
+                                        <div id="out-reliquat-promoteur" class="font-mono text-xl font-medium text-stone-700 tabular-nums mt-0.5">185 000 MAD</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Carte 2 : Substitution Makhraj -->
+                            <div class="bg-obsidian text-white p-6 relative">
+                                <div class="font-mono text-[10px] uppercase tracking-widest text-Chartreuse font-semibold mb-1">
+                                    Option B • Substitution Makhraj
+                                </div>
+                                <div id="out-delai-badge" class="text-xs text-stone-400 mb-6">Règlement notarié CDG sous ~21 jours</div>
+
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="text-[11px] text-stone-400">Capital net encaissé chez le Notaire</div>
+                                        <div id="out-net-makhraj" class="font-mono text-3xl font-semibold text-white tabular-nums mt-0.5">320 000 MAD</div>
+                                    </div>
+                                    <div class="pt-3 border-t border-stone-800 flex justify-between items-baseline">
+                                        <span class="text-[11px] text-stone-400">Gain de préservation net :</span>
+                                        <span id="out-sauve" class="font-mono text-lg font-semibold text-Chartreuse tabular-nums">+ 135 000 MAD</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- JAUGE PROPORTIONNELLE DYNAMIQUE -->
+                        <div class="bg-white border border-hairline p-6">
+                            <div class="flex justify-between text-xs font-medium mb-3">
+                                <span class="text-stone-600">Taux de préservation de votre épargne initiale</span>
+                                <span id="out-ratio-texte" class="font-mono text-crimson">Perte de 42% en cas de résiliation directe</span>
+                            </div>
+                            <div class="w-full h-3 bg-stone-100 flex overflow-hidden">
+                                <div id="bar-keep" class="bg-cypress h-full transition-all duration-300" style="width: 58%"></div>
+                                <div id="bar-lose" class="bg-crimson h-full transition-all duration-300" style="width: 42%"></div>
+                            </div>
+                            <div class="flex justify-between font-mono text-[10px] text-stone-400 mt-2">
+                                <span>■ Capital restitué sans Makhraj</span>
+                                <span>■ Capital détruit par la clause pénale (Sauvé par Makhraj)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA DU SIMULATEUR -->
+                    <div class="mt-8 pt-6 border-t border-hairline flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="text-xs text-stone-600">
+                            Dossier instruit en 24h par notre cellule juridique (Rabat • Témara • Casablanca).
+                        </div>
+                        <button onclick="triggerWhatsAppFromSim()" class="w-full sm:w-auto px-7 py-4 bg-cypress hover:bg-obsidian text-white text-xs font-medium tracking-wide transition shrink-0">
+                            Certifier mon contrat gratuitement →
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION III : TERMINAL DU MARCHÉ SECONDAIRE (DATA-TABLE INTERACTIVE RAMP) -->
+    <section id="terminal" class="py-24 bg-vellum border-b border-hairline">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
+            
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-bronze block mb-3">
+                        Chapitre III — Salle de Marché Secondaire (Côté Acquéreurs)
+                    </span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-obsidian leading-tight">
+                        Registre des Contrats Audités disponibles à la Substitution
+                    </h2>
+                    <p class="text-sm text-stone-600 mt-2 max-w-2xl">
+                        Chaque ligne correspond à un contrat sur plan dont les quittances promoteurs ont été auditées à 100 %. L'acquéreur entrant rembourse l'avance du cédant chez le Notaire et reprend le contrat au tarif historique.
+                    </p>
+                </div>
+
+                <!-- FILTRES DE VILLE (STYLE TERMINAL) -->
+                <div class="inline-flex border border-hairline bg-white p-1 self-start">
+                    <button onclick="filterLedger('all')" id="tab-city-all" class="px-4 py-2 text-xs font-mono uppercase bg-obsidian text-white transition">Tous (5)</button>
+                    <button onclick="filterLedger('temara')" id="tab-city-temara" class="px-4 py-2 text-xs font-mono uppercase text-stone-600 hover:text-obsidian transition">Témara / Harhoura</button>
+                    <button onclick="filterLedger('rabat')" id="tab-city-rabat" class="px-4 py-2 text-xs font-mono uppercase text-stone-600 hover:text-obsidian transition">Rabat</button>
+                    <button onclick="filterLedger('casa')" id="tab-city-casa" class="px-4 py-2 text-xs font-mono uppercase text-stone-600 hover:text-obsidian transition">Casablanca</button>
+                </div>
+            </div>
+
+            <!-- TABLEAU FINANCIER HAUTE PRÉCISION -->
+            <div class="relative bg-white border border-hairline overflow-x-auto">
+                <div class="sm:hidden px-4 py-2 bg-alabaster/80 border-b border-hairline font-mono text-[10px] text-stone-500 flex items-center justify-between">
+                    <span>Faire défiler vers la droite pour voir les colonnes financières →</span>
+                </div>
+                <table class="w-full text-left border-collapse min-w-[900px] sm:min-w-full">
+                    <thead>
+                        <tr class="border-b border-hairline bg-alabaster/60 font-mono text-[10px] uppercase tracking-wider text-stone-500">
+                            <th class="py-4 px-6">Bordereau & Localisation</th>
+                            <th class="py-4 px-6">Désignation de l'Actif</th>
+                            <th class="py-4 px-6">Échéance Livraison</th>
+                            <th class="py-4 px-6 text-right">Prix Actuel Promoteur</th>
+                            <th class="py-4 px-6 text-right">Prix Cession (Contrat N-2)</th>
+                            <th class="py-4 px-6 text-right">Avance à Rembourser</th>
+                            <th class="py-4 px-6 text-right">Gain Acquéreur</th>
+                            <th class="py-4 px-6 text-right">Instruction</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ledger-body" class="divide-y divide-hairline text-xs">
+                        <!-- Injecté dynamiquement par JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-cypress"></span>
+                    <span>Tous les dossiers affichés sont exempts de dessous-de-table (« Zéro Noir ») et éligibles au crédit bancaire classique ou Mourabaha.</span>
+                </div>
+                <button onclick="openAuditModal('acheteur')" class="font-mono text-xs text-obsidian underline hover:text-cypress">
+                    Rejoindre la liste d'alerte privée des investisseurs →
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION IV : ARCHITECTURE FISCALE & INTÉRÊT PROMOTEUR -->
+    <section id="ingenierie" class="py-24 bg-obsidian text-stone-200">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8">
+            
+            <div class="grid lg:grid-cols-12 gap-12 pb-16 border-b border-stone-800">
+                <div class="lg:col-span-6">
+                    <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-bronze block mb-3">
+                        Chapitre IV — Sécurité Juridique & Fiscale
+                    </span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-white leading-tight">
+                        Neutralité fiscale DGI & alignement d'intérêts avec le promoteur.
+                    </h2>
+                </div>
+                <div class="lg:col-span-6 flex flex-col justify-end text-sm text-stone-400 leading-relaxed">
+                    <p>
+                        Une cession de compromis réalisée sans ingénierie notariale expose les parties à une requalification en « double mutation » par la Direction Générale des Impôts (4 % + 4 % de droits d'enregistrement). Makhraj opère exclusivement via deux véhicules juridiques souverains.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-stone-800 border-b border-stone-800">
+                <div class="py-12 md:pr-10">
+                    <div class="font-mono text-xs text-Chartreuse mb-4">01 / LOI 107-12 (ART. 618-13 DOC)</div>
+                    <h3 class="font-serif text-2xl text-white mb-3">Substitution Légale ou Tripartite</h3>
+                    <p class="text-xs text-stone-400 leading-relaxed">
+                        En VEFA formalisée, l'article 618-13 du DOC autorise la cession de plein droit. Pour les contrats de réservation classiques (85 % du marché), nos notaires partenaires instrumentent un <strong>Acte Tripartite de Résiliation-Substitution Simultanée</strong> enregistré au droit fixe (200 MAD), éliminant toute double imposition.
+                    </p>
+                </div>
+
+                <div class="py-12 md:px-10">
+                    <div class="font-mono text-xs text-Chartreuse mb-4">02 / INCITATION DU PROMOTEUR</div>
+                    <h3 class="font-serif text-2xl text-white mb-3">Déblocage du Cash-Flow Chantier</h3>
+                    <p class="text-xs text-stone-400 leading-relaxed">
+                        Pourquoi le promoteur valide-t-il la substitution ? Un acheteur en défaut gèle un lot, bloque l'encaissement des 70 % restants et menace d'inscrire une <em>prénotation judiciaire</em> sur le Titre Mère. Makhraj lui apporte gratuitement un acquéreur solvable qui règle le solde immédiatement.
+                    </p>
+                </div>
+
+                <div class="py-12 md:pl-10">
+                    <div class="font-mono text-xs text-Chartreuse mb-4">03 / TIERS DE CONFIANCE</div>
+                    <h3 class="font-serif text-2xl text-white mb-3">Séquestre Notarial CDG</h3>
+                    <p class="text-xs text-stone-400 leading-relaxed">
+                        Aucun dirham ne transite de particulier à particulier. L'acquéreur entrant dépose le remboursement de l'avance sur le compte séquestre de l'Étude Notariale à la Caisse de Dépôt et de Gestion (CDG). Les fonds sont libérés au cédant dès la signature de l'avenant promoteur.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER INSTITUTIONNEL -->
+    <footer class="bg-obsidian text-stone-500 py-14 border-t border-stone-900 text-xs">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div>
+                <div class="flex items-baseline gap-3">
+                    <span class="font-serif text-2xl text-white">Makhraj</span>
+                    <span class="font-arabic text-sm text-bronze">مخرج</span>
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-stone-500">— Chambre de Substitution Immobilière</span>
+                </div>
+                <p class="mt-2 text-[11px] text-stone-500">
+                    Rabat (Souissi / Hay Riad) • Témara / Harhoura • Casablanca (Anfa / Bouskoura) • Tanger
+                </p>
+            </div>
+            <div class="font-mono text-[11px] text-stone-500 text-left sm:text-right">
+                <div>Conformité Art. 618-1 à 618-20 du DOC (Loi n° 107-12)</div>
+                <div class="mt-1">© 2026 Makhraj Maroc. Tous droits réservés.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- DRAWER LATÉRAL : MÉMORANDUM D'AUDIT & OUVERTURE DE DOSSIER -->
+    <div id="audit-drawer" class="fixed inset-0 z-50 hidden bg-obsidian/60 backdrop-blur-xs flex justify-end">
+        <div class="bg-vellum w-full max-w-xl h-full border-l border-hairline p-8 sm:p-12 overflow-y-auto flex flex-col justify-between shadow-2xl">
+            <div>
+                <div class="flex items-center justify-between pb-6 border-b border-hairline">
+                    <div>
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-bronze block">Cellule d'Instruction Notariale</span>
+                        <h3 id="drawer-title" class="font-serif text-3xl text-obsidian mt-1">Ouverture de Dossier</h3>
+                    </div>
+                    <button onclick="closeAuditModal()" class="w-9 h-9 border border-hairline bg-white hover:border-obsidian text-obsidian font-mono text-sm transition">✕</button>
+                </div>
+
+                <!-- Commutateur Cédant / Acquéreur -->
+                <div class="grid grid-cols-2 border border-hairline bg-alabaster p-1 my-6">
+                    <button type="button" id="btn-drawer-vendeur" onclick="setDrawerRole('vendeur')" class="py-2.5 text-xs font-mono uppercase bg-obsidian text-white transition">
+                        Cédant (Sortir d'un contrat)
+                    </button>
+                    <button type="button" id="btn-drawer-acheteur" onclick="setDrawerRole('acheteur')" class="py-2.5 text-xs font-mono uppercase text-stone-600 hover:text-obsidian transition">
+                        Acquéreur (Investir)
+                    </button>
+                </div>
+
+                <form onsubmit="submitDrawerForm(event)" class="space-y-5">
+                    <input type="hidden" id="d-role" value="CÉDANT (Sortie de contrat VEFA)">
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block font-mono text-[10px] uppercase tracking-wider text-stone-600 mb-2">Nom & Prénom *</label>
+                            <input id="d-nom" type="text" required placeholder="M. / Mme" class="w-full bg-white border border-hairline px-3.5 py-3 text-xs text-obsidian focus:outline-none focus:border-obsidian">
+                        </div>
+                        <div>
+                            <label class="block font-mono text-[10px] uppercase tracking-wider text-stone-600 mb-2">Téléphone WhatsApp *</label>
+                            <input id="d-tel" type="tel" required placeholder="+212 6..." class="w-full bg-white border border-hairline px-3.5 py-3 text-xs font-mono text-obsidian focus:outline-none focus:border-obsidian">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block font-mono text-[10px] uppercase tracking-wider text-stone-600 mb-2">Secteur Géographique *</label>
+                            <select id="d-ville" class="w-full bg-white border border-hairline px-3.5 py-3 text-xs text-obsidian focus:outline-none focus:border-obsidian">
+                                <option>Témara / Harhoura / Al Wifaq</option>
+                                <option>Rabat (Hay Riad, Souissi, Agdal)</option>
+                                <option>Casablanca / Bouskoura / Dar Bouazza</option>
+                                <option>Tanger / Marrakech</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label id="d-label-montant" class="block font-mono text-[10px] uppercase tracking-wider text-stone-600 mb-2">Avances versées (MAD) *</label>
+                            <input id="d-montant" type="text" required placeholder="Ex: 300 000 MAD" class="w-full bg-white border border-hairline px-3.5 py-3 text-xs font-mono text-obsidian focus:outline-none focus:border-obsidian">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-mono text-[10px] uppercase tracking-wider text-stone-600 mb-2">Références du dossier / Promoteur :</label>
+                        <textarea id="d-details" rows="3" placeholder="Indiquez le nom du projet, le prix contractuel initial et l'échéance de livraison..." class="w-full bg-white border border-hairline px-3.5 py-3 text-xs text-obsidian focus:outline-none focus:border-obsidian"></textarea>
+                    </div>
+
+                    <div class="p-4 bg-alabaster border border-hairline flex items-start gap-3 text-[11px] text-stone-600">
+                        <input type="checkbox" required class="mt-0.5 accent-obsidian">
+                        <span>Je certifie que les sommes déclarées dans ce dossier reposent intégralement sur des quittances officielles ou un contrat notarié (« Zéro Noir »).</span>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-cypress hover:bg-obsidian text-white text-xs font-mono uppercase tracking-wider transition">
+                        Transmettre à la Cellule d'Instruction →
+                    </button>
+                </form>
+            </div>
+
+            <div class="pt-6 border-t border-hairline text-[11px] text-stone-500 font-mono">
+                Traitement confidentiel sous 24h ouvrées • Études Notariales Rabat & Casablanca.
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS : MOTEUR DE CALCUL & REGISTRE DYNAMIQUE -->
+    <script>
+        const WHATSAPP_NUMBER = "212600000000"; // Remplacez par votre numéro professionnel
+
+        const LEDGER_DATA = [
+            {
+                ref: "MK-204", city: "temara", sector: "Harhoura • Guy-Ville",
+                asset: "Appartement F3 Résidence Fermée (98 m²)",
+                delivery: "Livraison : 90 jours",
+                devPrice: 1390000, contractPrice: 1225000, advance: 300000,
+                reason: "Refus crédit complémentaire (Expatriation)"
+            },
+            {
+                ref: "MK-207", city: "temara", sector: "Témara • Al Wifaq",
+                asset: "Appartement F4 Familial Ascenseur (118 m²)",
+                delivery: "Permis d'habiter prêt",
+                devPrice: 1280000, contractPrice: 1120000, advance: 250000,
+                reason: "Mutation professionnelle"
+            },
+            {
+                ref: "MK-209", city: "casa", sector: "Bouskoura • Ville Verte",
+                asset: "Appartement F4 Golf & Jardin (132 m²)",
+                delivery: "Permis d'habiter prêt",
+                devPrice: 2150000, contractPrice: 1890000, advance: 450000,
+                reason: "Arbitrage de trésorerie d'entreprise"
+            },
+            {
+                ref: "MK-214", city: "rabat", sector: "Rabat • Hay Riad Ext.",
+                asset: "Suite Exécutive 2 Pièces (56 m²)",
+                delivery: "Livraison : 120 jours",
+                devPrice: 1080000, contractPrice: 950000, advance: 220000,
+                reason: "Arbitrage patrimonial MRE"
+            },
+            {
+                ref: "MK-218", city: "casa", sector: "Dar Bouazza • Vue Mer",
+                asset: "Appartement F3 Terrasse (94 m²)",
+                delivery: "Livraison : 60 jours",
+                devPrice: 1450000, contractPrice: 1270000, advance: 290000,
+                reason: "Dépassement seuil d'endettement BAM"
+            }
+        ];
+
+        function formatMAD(n) {
+            return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " MAD";
+        }
+
+        function calculateArbitrage() {
+            const prix = parseInt(document.getElementById('sim-prix').value) || 0;
+            let avance = parseInt(document.getElementById('sim-avance').value) || 0;
+            const regime = document.getElementById('sim-regime').value;
+            const mode = document.getElementById('sim-mode').value;
+
+            if (avance > prix * 0.85) {
+                avance = Math.round(prix * 0.85);
+                document.getElementById('sim-avance').value = avance;
+            }
+
+            document.getElementById('sim-prix-label').innerText = formatMAD(prix);
+            document.getElementById('sim-avance-label').innerText = formatMAD(avance);
+
+            const penalite = (regime === 'compromis')
+                ? Math.min(avance, Math.round(prix * 0.10))
+                : Math.round(avance * 0.175);
+
+            const reliquatPromoteur = Math.max(0, avance - penalite);
+            const pctPerte = avance > 0 ? Math.round((penalite / avance) * 100) : 0;
+            const pctKeep = 100 - pctPerte;
+
+            const decoteExpress = (mode === 'express') ? Math.round(avance * 0.04) : 0;
+            const netMakhraj = avance - decoteExpress;
+            const gainSauve = netMakhraj - reliquatPromoteur;
+
+            document.getElementById('out-penalite').innerText = "- " + formatMAD(penalite);
+            document.getElementById('out-reliquat-promoteur').innerText = formatMAD(reliquatPromoteur);
+            document.getElementById('out-net-makhraj').innerText = formatMAD(netMakhraj);
+            document.getElementById('out-sauve').innerText = "+ " + formatMAD(gainSauve);
+            document.getElementById('out-delai-badge').innerText = (mode === 'express')
+                ? "Sortie accélérée (-4%) sous ~7 jours"
+                : "Règlement notarié CDG au pair sous ~21 jours";
+
+            document.getElementById('out-ratio-texte').innerText = `Destruction de ${pctPerte}% de votre avance en cas d'annulation directe`;
+            document.getElementById('bar-keep').style.width = `${pctKeep}%`;
+            document.getElementById('bar-lose').style.width = `${pctPerte}%`;
+        }
+
+        function renderLedger(filter = 'all') {
+            const tbody = document.getElementById('ledger-body');
+            tbody.innerHTML = '';
+
+            const rows = filter === 'all' ? LEDGER_DATA : LEDGER_DATA.filter(d => d.city === filter);
+
+            rows.forEach(item => {
+                const spread = item.devPrice - item.contractPrice;
+                const spreadPct = ((spread / item.devPrice) * 100).toFixed(1);
+
+                tbody.innerHTML += `
+                <tr class="hover:bg-alabaster/50 transition group">
+                    <td class="py-5 px-6">
+                        <div class="font-mono text-[11px] font-semibold text-obsidian">#${item.ref}</div>
+                        <div class="text-xs text-stone-500 mt-0.5">${item.sector}</div>
+                    </td>
+                    <td class="py-5 px-6">
+                        <div class="font-medium text-obsidian">${item.asset}</div>
+                        <div class="text-[11px] text-stone-400 mt-0.5">${item.reason}</div>
+                    </td>
+                    <td class="py-5 px-6">
+                        <span class="font-mono text-[11px] px-2.5 py-1 bg-alabaster border border-hairline text-stone-700">
+                            ${item.delivery}
+                        </span>
+                    </td>
+                    <td class="py-5 px-6 text-right font-mono text-stone-400 line-through tabular-nums">
+                        ${formatMAD(item.devPrice)}
+                    </td>
+                    <td class="py-5 px-6 text-right font-mono font-semibold text-obsidian tabular-nums">
+                        ${formatMAD(item.contractPrice)}
+                    </td>
+                    <td class="py-5 px-6 text-right font-mono text-cypress font-medium tabular-nums">
+                        ${formatMAD(item.advance)}
+                    </td>
+                    <td class="py-5 px-6 text-right font-mono">
+                        <span class="text-cypress font-semibold tabular-nums">+${formatMAD(spread)}</span>
+                        <span class="block text-[10px] text-stone-400">(-${spreadPct}%)</span>
+                    </td>
+                    <td class="py-5 px-6 text-right">
+                        <button onclick="selectDeal('${item.ref} — ${item.sector} (${formatMAD(item.contractPrice)})')" class="px-3.5 py-2 border border-hairline bg-white group-hover:bg-obsidian group-hover:text-white group-hover:border-obsidian text-obsidian font-mono text-[11px] transition">
+                            Mémorandum →
+                        </button>
+                    </td>
+                </tr>`;
+            });
+        }
+
+        function filterLedger(city) {
+            ['all', 'temara', 'rabat', 'casa'].forEach(c => {
+                const btn = document.getElementById('tab-city-' + c);
+                btn.className = (c === city)
+                    ? "px-4 py-2 text-xs font-mono uppercase bg-obsidian text-white transition"
+                    : "px-4 py-2 text-xs font-mono uppercase text-stone-600 hover:text-obsidian transition";
+            });
+            renderLedger(city);
+        }
+
+        function openAuditModal(role) {
+            setDrawerRole(role);
+            document.getElementById('audit-drawer').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAuditModal() {
+            document.getElementById('audit-drawer').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function selectDeal(dealDesc) {
+            openAuditModal('acheteur');
+            document.getElementById('d-details').value = `Demande d'accès au mémorandum notarial pour le dossier : ${dealDesc}`;
+        }
+
+        function setDrawerRole(role) {
+            const bV = document.getElementById('btn-drawer-vendeur');
+            const bA = document.getElementById('btn-drawer-acheteur');
+            const lbl = document.getElementById('d-label-montant');
+            const inp = document.getElementById('d-role');
+
+            if (role === 'vendeur') {
+                bV.className = "py-2.5 text-xs font-mono uppercase bg-obsidian text-white transition";
+                bA.className = "py-2.5 text-xs font-mono uppercase text-stone-600 hover:text-obsidian transition";
+                lbl.innerText = "Avances versées (MAD) *";
+                inp.value = "CÉDANT (Sortie de contrat VEFA)";
+            } else {
+                bA.className = "py-2.5 text-xs font-mono uppercase bg-obsidian text-white transition";
+                bV.className = "py-2.5 text-xs font-mono uppercase text-stone-600 hover:text-obsidian transition";
+                lbl.innerText = "Fonds propres disponibles (MAD) *";
+                inp.value = "ACQUÉREUR (Reprise de contrat audité)";
+            }
+        }
+
+        function triggerWhatsAppFromSim() {
+            const prix = document.getElementById('sim-prix-label').innerText;
+            const avance = document.getElementById('sim-avance-label').innerText;
+            const sauve = document.getElementById('out-sauve').innerText;
+            const text = encodeURIComponent(`Bonjour Cabinet Makhraj,\nJe souhaite soumettre mon contrat sur plan pour une substitution notariée :\n• Prix contractuel : ${prix}\n• Avances quittancées : ${avance}\n• Pénalité à sauvegarder : ${sauve}`);
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, '_blank');
+        }
+
+        function submitDrawerForm(e) {
+            e.preventDefault();
+            const role = document.getElementById('d-role').value;
+            const nom = document.getElementById('d-nom').value;
+            const tel = document.getElementById('d-tel').value;
+            const ville = document.getElementById('d-ville').value;
+            const montant = document.getElementById('d-montant').value;
+            const details = document.getElementById('d-details').value;
+
+            const msg = encodeURIComponent(`*DOSSIER D'INSTRUCTION MAKHRAJ*\n• Qualité : ${role}\n• Nom : ${nom}\n• Ligne : ${tel}\n• Secteur : ${ville}\n• Montant : ${montant}\n• Références : ${details}`);
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+        }
+
+        // Fermeture au clic sur l'arrière-plan du tiroir
+        document.getElementById('audit-drawer').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAuditModal();
+            }
+        });
+
+        // Fermeture à la touche Échap
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAuditModal();
+            }
+        });
+
+        calculateArbitrage();
+        renderLedger('all');
+    </script>
+</body>
+</html>
